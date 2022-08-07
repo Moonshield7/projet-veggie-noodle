@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Boissons - Veggie Noodle{% endblock %}
+
+{% block body %}
+
+    <div class="bg drink">
+
+        <h1>Une petite soif ? Voici les boissons que nous proposons</h1>
+
+        <div class="card-container">
+
+            {% for drink in drinks %}
+
+                <div class="card">
+                    <div class="card-img">
+                        <img src="{{ '../uploads/' ~drink.picture }}" alt="{{'Photo de la boisson : ' ~drink.title}}">
+                    </div>
+                    <div class="card-text">
+                        <h3> {{drink.title}} </h3>
+                        <p> {{drink.description}} </p>
+                        <h4> {{drink.price}} €</h4>
+                    </div>
+
+                </div>
+
+
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Gérer la carte{% endblock %}
+
+{% block body %}
+
+    <div class="bg admin scroll">
+
+        <h1>Liste des produits proposés à la carte</h1>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="hide">#</th>
+                        <th>Titre</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Prix</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for food in foods %}
+
+                        <tr>
+                            <th class="hide"> {{food.id}} </th>
+                            <td>{{food.title}}</td>
+                            <td>{{food.type}}</td>
+                            <td>{{food.description}}</td>
+                            <td>{{food.price}}€</td>
+                            <td><a href="{{ path('app_admin_food_update', {'id': food.id}) }}"> <span class="hide"> Modifier </span><i class="fa-solid fa-pen-to-square"></i></a> - <a href="{{ path('app_admin_food_delete', {'id': food.id}) }}"><span class="hide"> Supprimer</span> <i class="fa-solid fa-trash"></i></a></td>
+                        </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a href=" {{path('app_admin_food_add')}} " class="dashboard-button">Ajouter un produit</a>
+        <br>
+
+
+    </div>
+{% endblock %}

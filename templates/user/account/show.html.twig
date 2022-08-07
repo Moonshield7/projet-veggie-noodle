@@ -1,0 +1,96 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Mon compte - Veggie Noodle{% endblock %}
+
+{% block body %}
+
+    <div class="bg account">
+
+        <h1>Bonjour, {{app.user.name}} </h1>
+
+        <h2>Mes réservations</h2>
+
+        {% if bookings is not empty %}
+
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col col-1">#</th>
+                            <th scope="col col-2">Date de réservation</th>
+                            <th scope="col col-2">Utilisateur</th>
+                            <th scope="col col-2">Nombre de clients</th>
+                            <th scope="col col-2">Créé le</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for booking in bookings %}
+
+                            <tr>
+                                <th scope="row"> {{booking.id}} </th>
+                                <td>{{booking.date | date("d/m/Y")}}</td>
+                                <td>{{booking.user.name}}</td>
+                                <td>{{booking.nbCustomers}}</td>
+                                <td>{{booking.createdAt | date("d/m/Y") }}</td>
+                            </tr>
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="container">
+                <h3>Vous n'avez jamais réservé dans notre restaurant à ce jour.</h3>
+            </div>
+        {% endif %}
+
+
+        <a href=" {{path('app_user_booking_add')}} " class="dashboard-button">Réservez !</a>
+
+        <br> <br>
+
+                {% if comments is not empty %}
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="hide">#</th>
+                            <th>Note</th>
+                            <th>Commentaire</th>
+                            <th>Créé le</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for comment in comments %}
+
+                            <tr>
+                                <th class="hide"> {{comment.id}} </th>
+                                <td>{{comment.note}} / 5</td>
+                                <td>{{comment.text}}</td>
+                                <td>{{comment.createdAt | date("d/m/Y") }}</td>
+                                <td><a href="{{ path('app_user_comment_delete', {'id': comment.id}) }}"><span class="hide"> Supprimer</span> <i class="fa-solid fa-trash"></i></a></td>
+                            </tr>
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="container">
+                <h3>Vous n'avez jamais laissé de commentaire.</h3>
+            </div>
+        {% endif %}
+
+        <a href=" {{path('app_user_comment_add')}} " class="dashboard-button">Ajoutez un commentaire !</a>
+        
+        <br>
+
+    </div>
+
+{% endblock %}

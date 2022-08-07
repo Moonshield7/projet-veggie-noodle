@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Réservez !{% endblock %}
+
+{% block body %}
+
+    <div class="bg account">
+
+        <h1>Réservez une table</h1>
+
+        <a href="{{path('app_user_show_account')}}" class="backlink">    <i class="fas fa-arrow-left"></i> Retour à votre compte</a>
+
+        <div class="container-form">
+            {{form_start(form)}}
+                <div class="form-group">
+                    {{form_row(form.nbCustomers)}}
+                </div>
+                <div class="form-group">
+                    {{form_row(form.date)}}
+                </div>
+                <div class="form-group">
+                    {{form_row(form.service)}}
+                </div>
+            {{form_end(form)}}
+        </div>
+    </div>
+
+
+
+{% endblock %}

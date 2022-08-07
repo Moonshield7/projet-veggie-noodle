@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Gérer les commentaires{% endblock %}
+
+{% block body %}
+
+<div class="bg admin">
+
+    <h1>Liste des commentaires</h1>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Utilisateur</th>
+                    <th>Commentaire</th>
+                    <th>Créé le</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for comment in comments %}
+
+                    <tr>
+                        <th> {{comment.id}} </th>
+                        <td>{{comment.user.name}}</td>
+                        <td>{{comment.text}}</td>
+                        <td>{{comment.createdAt | date("d/m/Y") }}</td>
+                        <td><a href="{{ path('app_admin_comment_delete', {'id': comment.id}) }}"><span class="hide"> Supprimer</span> <i class="fa-solid fa-trash"></i></a></td>
+                    </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

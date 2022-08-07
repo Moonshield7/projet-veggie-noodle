@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Gérer les utilisateurs{% endblock %}
+
+{% block body %}
+
+    <div class="bg admin">
+    
+        <h1>Liste des utilisateurs</h1>
+    
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Email</th>
+                        <th>Nom d'utilisateur</th>
+                        <th>Téléphone</th>
+                        <th>Réservations</th>
+                        <th>Commentaires</th>
+                        <th>Rôles</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+    
+                    {% for user in users %}
+    
+                        <tr>
+                            <th> {{user.id}} </th>
+                            <td>{{user.email}}</td>
+                            <td>{{user.name}}</td>
+                            <td>{{user.phoneNumber}}</td>
+                            <td>{{user.bookings|length}}</td>
+                            <td>{{user.comments|length}}</td>
+                            <td>{% for role in user.roles %}
+                                    {% if role == "ROLE_USER" %} 
+                                        Utilisateur 
+                                    {% else %}
+                                        Administrateur, 
+                                    {% endif %}
+                                {% endfor %} </td>
+                            <td> <a href="{{ path   ('app_admin_user_delete', {'id': user.id}  ) }}"><span class="hide"> Supprimer</span> <i class="fa-solid fa-trash"></i></a></td>
+                            {# <td><a href="{{ path ('app_admin_user_update', {'id': user.id}    ) }}">Modifier</a> - <a href="{{ path   ('app_admin_user_delete', {'id': user.id}  ) }}">Supprimer</a></td> #}
+                        </tr>
+    
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    
+    </div>
+
+{% endblock %}

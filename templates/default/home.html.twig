@@ -1,0 +1,105 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Accueil - Veggie Noodle{% endblock %}
+
+{% block body %}
+
+
+    <header>
+        <div class="header-container">
+            <h1>Veggie Noodles</h1>
+            <p><strong> Des pâtes fraîches, faites maisons, 100% vegan !</strong></p>
+        </div>
+    </header>
+
+    <div class="bg home">
+        <div class="container">
+
+            
+            <div class="article">
+                <div class="text-home">
+
+                    <h2>Notre histoire</h2>
+
+                    <p>Il était une fois à Mouais, petite commune tranquille de Loire Atlantique, deux grands rêveurs : Cédric et Sebastien. Passionnés de cuisine mais aussi investis dans la protection animale, nous souhaitions ouvrir un restaurant qui nous ressemble, à la carte remplie de mets simples mais savoureux.</p>
+
+                    <br>
+
+                    <p>C'est ainsi que naît <strong>Veggie Noodle</strong> ! En vedette ? Des <strong>pâtes</strong>, oui mais surtout... une carte 100% <strong>vegan</strong>, qui ravira aussi bien les défenseurs de la cause animale, que les amateurs de nouilles en tous genre.</p>
+
+                    <p>Si vous souhaitez en savoir plus sur ce qui nous pousse à nous tourner vers l'alimentation végétale, rendez vous sur le site de <a href="https://vegan-pratique.fr/pourquoi-devenir-vegan/">vegan-pratique</a> !</p>
+
+                    <br>
+
+                    <p>Tous deux chefs diplômés, nous mettrons notre ingéniosité et notre savoir-faire à la disposition de vos papilles. Venez découvrir des recettes de <strong>pâtes</strong> traditionnelles revisitées façon <strong>vegan</strong>, ou quelques unes de nos créations !</p>
+                </div>
+
+                <div class="img-home">
+                    <img src="https://images.unsplash.com/photo-1629407119384-d42320c3e576?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Nos chefs en préparation d'un plat" class="chefs">
+                </div>
+            </div>
+
+        </div>
+        <div class="container" id="c2">
+
+            
+
+            <div class="article">
+
+                <div class="img-home">
+                    <img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="De bons et beaux légumes frais">
+                </div>
+
+                <div class="text-home">
+
+                    <h2>Des ingrédients frais, locaux et de saison</h2>
+
+                    <p>Chez <strong>Veggie Noodle</strong>, nous avons à coeur de vous faire déguster le meilleur. Pour cela, nous préparons nos <strong>pâtes fraîches maison</strong>, et nous cuisinons principalement des ingrédients <strong>frais</strong>, <strong>locaux</strong>, et de <strong>saison</strong>. </p>
+
+                    <br>
+
+                    <p>Nous travaillons main dans la main avec des <strong>petits producteurs</strong> de nos régions, parce que pour <strong>protéger notre environnement</strong> efficacement, il faut aussi revoir notre manière de consommer !</p>
+
+                    <p>Vous souhaitez en savoir plus sur nos partenaires ? Rendez vous sur le site de <a href="https://www.terroirs44.org/nos-producteurs/les-producteurs-terroirs-44/">Terroirs44</a> ! </p>
+
+                    <br>
+
+                    <p>Une sensibilité au <strong>gluten</strong> ? Pas de soucis ! Nous proposons des alternatives <strong>sans gluten</strong> à chacun de nos plats de <strong>pâtes</strong> pour que le plaisir de manger un bon plat soit étendu au plus grand nombre ! </p>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <a href="{{path('app_user_show_account')}}" class="home-button">Venez manger !</a>
+
+        <br>
+
+        <h2>Besoin d'être convaincu ? Voici l'avis de nos clients !</h2>
+
+        <br>
+
+        <div class="carousel">
+            <div class="comment-container">
+                {% for comment in comments %}
+                <div class="comment-card">
+                    <div class="username">
+                        <h4>{{comment.user.name}}</h4>
+                    </div>
+                    <div class="note">
+                        <p>Note : {{comment.note}}/5</p>
+                    </div>       
+                    <div class="comment-text">
+                        <p>{{comment.text}} </p>
+                    </div>             
+                </div>                
+                {% endfor %}
+            </div>
+        </div>
+
+        <br>
+
+    </div>
+
+
+{% endblock %}
