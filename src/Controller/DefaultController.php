@@ -59,8 +59,7 @@ class DefaultController extends AbstractController
     public function showDrink(FoodRepository $repository): Response
     {
 
-        $drinks = $repository->findBy(array('type' => 'Boisson
-        '));
+        $drinks = $repository->findBy(array('type' => 'Boisson'));
 
         return $this->render('default/drink.html.twig', [
             'drinks' => $drinks
